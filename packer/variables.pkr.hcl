@@ -25,7 +25,7 @@ variable "ami_id" {
 variable "instance_type" {
   description = "my source instance type"
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 locals {
