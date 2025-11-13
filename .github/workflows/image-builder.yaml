@@ -1,5 +1,6 @@
 ---
 name: "Building Shopping Application Image"
+
 on:
   push:
     branches:
@@ -7,13 +8,12 @@ on:
       - main
 
 jobs:
-
   image-build-job:
-
     name: "Build AMI with Packer"
     runs-on: ubuntu-latest
+
     env:
-      AWS_ACCESS_KEY_ID: ${{ secret.access_key }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.access_key }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.secret_key }}
       AWS_DEFAULT_REGION: "us-east-2"
       PACKER_VERSION: "1.14.2"
@@ -31,10 +31,11 @@ jobs:
         run: packer init .
         working-directory: ./packer/
 
-     - name: "Validate Packer Templates"
-       run: packer validate .
-       working-directory: ./packer/
+      - name: "Validate Packer Templates"
+        run: packer validate .
+        working-directory: ./packer/
 
-     - name: "Build AMI Image"
-       run: packer build .
-       working-directory: ./packer/
+      - name: "Build AMI Image"
+        run: packer build .
+        working-directory: ./packer/
+
