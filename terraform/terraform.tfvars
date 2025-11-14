@@ -1,0 +1,9 @@
+aws_region          = "us-east-2"
+project_name        = "zomato"
+project_environment = "production"
+ami_id              = "ami-0199d4b5b8b4fde0e"
+instance_type       = "t3.micro"
+webserver_ports     = ["80", "443", "22"]
+domain_name         = "amaldev.site"
+webserver_hostname  = "terraform"
+enable_public_ip    = true
